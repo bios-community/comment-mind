@@ -1,0 +1,63 @@
+@use "../../styles/abstracts/" as *;
+@use "sass:color";
+
+.link-form {
+	margin: 3rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// background-color: red;
+	width: fit-content;
+	padding: 0.6rem 0.6rem 0.6rem 1rem;
+	border-radius: 0.5rem;
+	border: 2px solid color.adjust($white, $alpha: -0.7);
+
+	&__input {
+		color: $white;
+		font-size: $font-size-base;
+		font-weight: $font-weight-medium;
+		background-color: $dark-md;
+		border: none;
+		// padding: 1rem;
+		font-family: $font-family;
+		width: 30rem;
+
+		&::placeholder {
+			color: color.adjust($white, $alpha: -0.7);
+			font-size: $font-size-base;
+			font-weight: $font-weight-medium;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__button {
+		background-color: $color-primary;
+		border: none;
+		padding: 0.8rem 1rem;
+		line-height: 1;
+		border-radius: 4px;
+		color: $white;
+		font-size: $font-size-base;
+		font-weight: $font-weight-medium;
+		font-family: $font-family;
+		cursor: pointer;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.6rem;
+
+		transition: all 0.2s ease-in-out;
+
+		img {
+			width: 1.25rem;
+		}
+
+		&:hover {
+			background-color: color.adjust($color-primary, $alpha: -0.5);
+		}
+	}
+}
