@@ -1,8 +1,8 @@
 import React from "react";
 import "./Home.scss";
 
-import Header from "../Header/Header";
-import LinkForm from "../LinkForm/LinkForm";
+import Header from "../../components/Header/Header";
+import LinkForm from "../../components/LinkForm/LinkForm";
 
 const Home = ({ setLink }) => {
 	return (
