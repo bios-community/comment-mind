@@ -2,7 +2,7 @@ import React from "react";
 import "./Loader.scss";
 
 const Loader = () => (
-	<div role="status">
+	<div role="status" className="loader-parent">
 		<svg
 			aria-hidden="true"
 			viewBox="0 0 100 101"
@@ -19,6 +19,7 @@ const Loader = () => (
 				fill="currentFill"
 			/>
 		</svg>
+		<p className="loader-parent__text">Analyzing the video...</p>
 	</div>
 );
 

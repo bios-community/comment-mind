@@ -11,11 +11,19 @@
 	}
 }
 
-.loader {
-	display: inline;
-	width: 10px;
-	height: 10px;
-	margin-right: 2px;
-	fill: $color-primary;
-	animation: spin 1s linear infinite;
+.loader-parent {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 2rem;
+	min-height: 70vh;
+
+	.loader {
+		display: inline;
+		width: 2rem;
+		height: 2rem;
+		fill: $color-primary;
+		animation: spin 1s linear infinite;
+	}
 }
