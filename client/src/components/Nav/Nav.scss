@@ -1,3 +1,5 @@
+@use "../../styles/abstracts/" as *;
+
 .nav {
 	display: flex;
 	justify-content: space-between;
@@ -9,20 +11,20 @@
 	}
 
 	&__link {
-		background-color: #fff;
-		color: #000;
+		background-color: $white;
+		color: $dark-md;
 		padding: 0.8rem 1.2rem;
 		display: flex;
 		gap: 10px;
 		align-items: center;
 		text-decoration: none;
-		font-weight: 600;
+		font-weight: $font-weight-medium;
 		border-radius: 5px;
-		box-shadow: 0 0 30px -5px #2369ec;
+		box-shadow: 0 0 30px -5px $color-primary;
 		transition: box-shadow 0.1s ease-in;
 
 		&:hover {
-			box-shadow: 0 0 40px 0px #2369ec;
+			box-shadow: 0 0 40px 0px $color-primary;
 		}
 
 		img {
