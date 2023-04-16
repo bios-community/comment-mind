@@ -1,0 +1,13 @@
+$font-size-sm: clamp(0.75rem, 0.26vw + 0.69rem, 0.89rem);
+$font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+$font-size-md: clamp(1.33rem, 0.45vw + 1.22rem, 1.58rem);
+$font-size-lg: clamp(1.78rem, 0.61vw + 1.63rem, 2.11rem);
+$font-size-xl: clamp(2.37rem, 0.81vw + 2.17rem, 2.81rem);
+$font-size-xxl: clamp(3.16rem, 1.08vw + 2.89rem, 3.75rem);
+$font-size-xxxl: clamp(4.21rem, 1.43vw + 3.85rem, 5rem);
+
+$font-family: "Manrope", sans-serif;
+
+$font-weight-normal: 400;
+$font-weight-medium: 600;
+$font-weight-bold: 800;
