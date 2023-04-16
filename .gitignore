@@ -1,1 +1,9 @@
 node_modules
+
+# Native mac .gitignore collection
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Text document containing passwords and credentials
+keys.txt
