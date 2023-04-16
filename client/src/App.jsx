@@ -1,6 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Nav from "./components/Nav/Nav";
 import { useState } from "react";
+
+import Nav from "./components/Nav/Nav";
+import CommentAnalysis from "./components/CommentAnalysis/CommentAnalysis";
+import Home from "./components/Home/Home";
+
+import "./App.scss";
 
 function App() {
 	const [link, setLink] = useState("");
