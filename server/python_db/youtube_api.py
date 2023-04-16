@@ -20,7 +20,6 @@ def YoutubeAPI(api_key,video_url):
         ).execute()
     # Extract video title
     video_title = video_response['items'][0]['snippet']['title']
-    print(f'Video Title: {video_title}')
 
 
     channel_id = video_response['items'][0]['snippet']['channelId']
@@ -32,8 +31,6 @@ def YoutubeAPI(api_key,video_url):
     # Extract channel name, subscriber count, and likes count
     channel_name = channel_response['items'][0]['snippet']['title']
     subscriber_count = channel_response['items'][0]['statistics']['subscriberCount']
-    print(channel_name)
-    print(subscriber_count)
     while True:
         # Retrieve comments for the video
         response = youtube.commentThreads().list(
