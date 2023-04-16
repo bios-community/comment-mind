@@ -1,0 +1,21 @@
+@use "../../styles/abstracts/" as *;
+
+// className="inline w-10 h-10 mr-2 text-gray-200 animate-spin fill-[#6469ff]"
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.loader {
+	display: inline;
+	width: 10px;
+	height: 10px;
+	margin-right: 2px;
+	fill: $color-primary;
+	animation: spin 1s linear infinite;
+}
