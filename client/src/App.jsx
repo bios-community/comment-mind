@@ -14,10 +14,7 @@ function App() {
 			<Nav />
 			<Routes>
 				<Route path="/" element={<Home setLink={setLink} />} />
-				<Route
-					path="/comment-analysis"
-					element={<Analysis link={link} />}
-				/>
+				<Route path="/analysis" element={<Analysis link={link} />} />
 			</Routes>
 		</>
 	);
