@@ -27,9 +27,18 @@ comments_db = atlas_client.comments_db
 #Create Two collections
 questions = comments_db.questions
 feedbacks = comments_db.feedbacks
+video_details = comments_db.video_details
 
 questions.insert_many([{'question':question} for question in interrogative_comments])
 print("Question inserted in Database")
 
 feedbacks.insert_many([{'feedback':feedback} for feedback in feedback_comments])
 print("Feedbacks also inserted")
+
+video_details.insert_one({
+    'Title':video_title,
+    'Subscriber': subscriber_count,
+    'Channel Name': channel_name
+})
+
+print("inserted video details too")
