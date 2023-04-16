@@ -4,11 +4,11 @@ import "./Home.scss";
 import Header from "../Header/Header";
 import LinkForm from "../LinkForm/LinkForm";
 
-const Home = () => {
+const Home = ({ setLink }) => {
 	return (
 		<>
 			<Header />
-			<LinkForm />
+			<LinkForm setLink={setLink} />
 		</>
 	);
 };

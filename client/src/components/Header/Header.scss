@@ -36,8 +36,6 @@
 				color.adjust($color-primary, $alpha: -1),
 				color.adjust($color-primary, $alpha: -0.2)
 			);
-
-			@debug color.adjust($color-primary, $alpha: -1);
 		}
 	}
 
