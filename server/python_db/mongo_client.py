@@ -1,10 +1,10 @@
 import pickle as pkl
 from pymongo import MongoClient
-from keys import api_key
+from keys import api_key, AtlasConnection_string
 from youtube_api import YoutubeAPI
 
 # The function returns 4 parameters
-comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key,video_url="https://youtu.be/UpsZDGutpZc")
+comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key,video_url="https://youtu.be/1qw5ITr3k9E")
 
 comment_classifier = pkl.load(open("Pickle_file/question_classifier.pkl",'rb'))
 vectorizer = pkl.load(open("Pickle_file/text_vectorizer.pkl",'rb'))
@@ -17,4 +17,8 @@ for comment in comments:
         interrogative_comments.append(comment)
     else:
         feedbacks.append(comment)
+
+# Start saving comments to database in Different collections
+
+atlas_client = MongoClient(AtlasConnection_string)
 
