@@ -3,17 +3,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import GradientBoostingClassifier
 import pickle as pkl
 
+# Download data to Train the model on 
 nltk.download('nps_chat')
 posts = nltk.corpus.nps_chat.xml_posts()
 
-
+# Extract text from the data
 posts_text = [post.text for post in posts]
 
-#divide train and test in 80 20
+# divide train and test in 80 20
 train_text = posts_text[:int(len(posts_text)*0.8)]
 test_text = posts_text[int(len(posts_text)*0.2):]
 
-#Get TFIDF features
+# Get TFIDF features
 vectorizer = TfidfVectorizer(ngram_range=(1,3), 
                              min_df=0.001, 
                              max_df=0.7, 
@@ -33,7 +34,7 @@ gb = GradientBoostingClassifier(n_estimators = 400, random_state=0)
 
 gb.fit(X_train, y_train)
 
-#Save trained Gradient Boosting model to aviod training and runtime
+# Save trained Gradient Boosting model to aviod training and runtime
 filename_model = "question_classifier"
 filename_vectorizer = "text_vectorizer"
 
