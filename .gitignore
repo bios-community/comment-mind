@@ -28,7 +28,8 @@ node_modules
 .DS_Store
 .AppleDouble
 .LSOverride
+__pycache__
 
 # Text document containing passwords and credentials
-keys.txt
+keys.py
 .env
