@@ -4,7 +4,7 @@ from keys import api_key, AtlasConnection_string
 from youtube_api import YoutubeAPI
 
 # The function returns 4 parameters
-comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key,video_url="https://youtu.be/1qw5ITr3k9E")
+comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key,video_url="https://youtu.be/uRQH2CFvedY")
 
 comment_classifier = pkl.load(open("Pickle_file/question_classifier.pkl",'rb'))
 vectorizer = pkl.load(open("Pickle_file/text_vectorizer.pkl",'rb'))
@@ -21,7 +21,8 @@ for comment in comments:
 # Start saving comments to database in Different collections
 
 atlas_client = MongoClient(AtlasConnection_string)
-
+session = atlas_client.start_session()
+session_id = session.session_id
 #Create a Database
 comments_db = atlas_client.comments_db
 #Create Two collections
@@ -29,10 +30,10 @@ questions = comments_db.questions
 feedbacks = comments_db.feedbacks
 video_details = comments_db.video_details
 
-questions.insert_many([{'question':question} for question in interrogative_comments])
+questions.insert_many([{'comment':question} for question in interrogative_comments])
 print("Question inserted in Database")
 
-feedbacks.insert_many([{'feedback':feedback} for feedback in feedback_comments])
+feedbacks.insert_many([{'comment':feedback} for feedback in feedback_comments])
 print("Feedbacks also inserted")
 
 video_details.insert_one({
