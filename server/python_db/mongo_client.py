@@ -25,21 +25,21 @@ session = atlas_client.start_session()
 session_id = session.session_id
 #Create a Database
 comments_db = atlas_client.comments_db
+collection_question_name = "q_"+session_id
+collection_feedback_name = "f_"+session_id
+collection_video_name = "d_"+session_id
 #Create Two collections
-questions = comments_db.questions
-feedbacks = comments_db.feedbacks
-video_details = comments_db.video_details
+questions = comments_db[collection_question_name]
+feedbacks = comments_db[collection_feedback_name]
+video_details = comments_db[collection_video_name]
 
 questions.insert_many([{'comment':question} for question in interrogative_comments])
-print("Question inserted in Database")
-
 feedbacks.insert_many([{'comment':feedback} for feedback in feedback_comments])
-print("Feedbacks also inserted")
+
 
 video_details.insert_one({
     'Title':video_title,
     'Subscriber': subscriber_count,
     'Channel Name': channel_name
 })
-
-print("inserted video details too")
+print(session_id)
