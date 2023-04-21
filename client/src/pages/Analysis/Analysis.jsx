@@ -19,13 +19,13 @@ const Analysis = ({ link }) => {
 		setIsLoading(true);
 	}, []);
 
-	useEffect(async () => {
-		const response = await axios.post("http://localhost:3000/comments", {
-			link,
-		});
-		console.log(response);
-		setIsLoading(false);
-	}, []);
+	// useEffect(async () => {
+	// 	const response = await axios.post("http://localhost:3000/comments", {
+	// 		link,
+	// 	});
+	// 	console.log(response);
+	// 	setIsLoading(false);
+	// }, []);
 
 	return <>{isLoading ? <Loader /> : <div>Analysis</div>}</>;
 };
