@@ -2,9 +2,11 @@ import pickle as pkl
 from pymongo import MongoClient
 from keys import api_key, AtlasConnection_string
 from youtube_api import YoutubeAPI
+import random
+import string
 
 # The function returns 4 parameters
-comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key,video_url="https://youtu.be/uRQH2CFvedY")
+comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key,video_url="https://youtu.be/2LhoCfjm8R4")
 
 comment_classifier = pkl.load(open("Pickle_file/question_classifier.pkl",'rb'))
 vectorizer = pkl.load(open("Pickle_file/text_vectorizer.pkl",'rb'))
@@ -21,13 +23,16 @@ for comment in comments:
 # Start saving comments to database in Different collections
 
 atlas_client = MongoClient(AtlasConnection_string)
-session = atlas_client.start_session()
-session_id = session.session_id
+
+#Create session_id with random string
+length = 7
+session_id = ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+
 #Create a Database
 comments_db = atlas_client.comments_db
-collection_question_name = "q_"+session_id['id']
-collection_feedback_name = "f_"+session_id['id']
-collection_video_name = "d_"+session_id['id']
+collection_question_name = "q_"+session_id
+collection_feedback_name = "f_"+session_id
+collection_video_name = "d_"+session_id
 #Create Two collections
 questions = comments_db[collection_question_name]
 feedbacks = comments_db[collection_feedback_name]
@@ -42,4 +47,4 @@ video_details.insert_one({
     'Subscriber': subscriber_count,
     'Channel Name': channel_name
 })
-print(session_id['id'])
+print(session_id)
