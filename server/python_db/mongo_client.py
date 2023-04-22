@@ -25,9 +25,9 @@ session = atlas_client.start_session()
 session_id = session.session_id
 #Create a Database
 comments_db = atlas_client.comments_db
-collection_question_name = "q_"+session_id
-collection_feedback_name = "f_"+session_id
-collection_video_name = "d_"+session_id
+collection_question_name = "q_"+session_id['id']
+collection_feedback_name = "f_"+session_id['id']
+collection_video_name = "d_"+session_id['id']
 #Create Two collections
 questions = comments_db[collection_question_name]
 feedbacks = comments_db[collection_feedback_name]
@@ -42,4 +42,4 @@ video_details.insert_one({
     'Subscriber': subscriber_count,
     'Channel Name': channel_name
 })
-print(session_id)
+print(session_id['id'])
