@@ -1,7 +1,8 @@
 @use "sass:color";
 @use "./colors" as *;
 @mixin focus-ring {
-	&:focus {
-		outline: 4px solid color.adjust($color-primary, $alpha: -0.5);
+	&:focus-visible {
+		outline: 4px solid
+			color.adjust($color-primary, $alpha: -0.3, $lightness: 20%);
 	}
 }

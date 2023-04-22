@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./LinkForm.scss";
 
 import GearIcon from "../../assets/gear.svg";
+import InfoIcon from "../../assets/info.svg";
 
 const LinkForm = ({ setLink }) => {
 	const [inputValue, setInputValue] = useState("");
@@ -13,27 +14,51 @@ const LinkForm = ({ setLink }) => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		const errorElement = document.querySelector(".error-element");
+		const input = document.querySelector(
+			".link-form__input-wrapper__input"
+		);
 
 		if (youtubeRegex.test(inputValue)) {
+			errorElement.style.display = "none";
+			input.classList.remove("link-form__input-wrapper__input--error");
+
 			setLink(inputValue);
 			navigate("/analysis");
 		} else {
 			setInputValue("");
-			alert("Please enter a valid YouTube video link.");
+
+			errorElement.style.display = "flex";
+
+			input.classList.add("link-form__input-wrapper__input--error");
+			// errorElement.classList.add("link-form__input-wrapper--error");
+			// alert("Please enter a valid YouTube video link.");
 		}
 	};
 
 	return (
 		<div className="container">
 			<form className="link-form">
-				<input
-					type="text"
-					className="link-form__input"
-					placeholder="Enter a YouTube Video Link"
-					onChange={e => setInputValue(e.target.value)}
-					value={inputValue}
-					onSubmit={handleSubmit}
-				/>
+				<div className="link-form__input-wrapper">
+					<input
+						type="text"
+						className="link-form__input-wrapper__input"
+						placeholder="Enter a YouTube Video Link"
+						onChange={e => setInputValue(e.target.value)}
+						value={inputValue}
+						onSubmit={handleSubmit}
+					/>
+					<span className="error-element">
+						<img
+							src={InfoIcon}
+							alt="Info Icon"
+							className="error-element__icon"
+						/>
+						<span className="error-element__message">
+							Enter a Valid YouTube Video Link!
+						</span>
+					</span>
+				</div>
 				<button
 					type="submit"
 					className="link-form__button"

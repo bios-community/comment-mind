@@ -9,26 +9,55 @@
 	align-items: center;
 	width: calc(20vw + 20rem);
 
-	&__input {
-		padding: 1rem 1.5rem;
-		border-radius: 0.5rem;
-		border: 1px solid color.adjust($white, $alpha: -0.7);
-		color: $white;
-		font-size: $font-size-base;
-		font-weight: $font-weight-medium;
-		background-color: $dark-md;
-		font-family: $font-family;
+	&__input-wrapper {
 		width: 100%;
 
-		&::placeholder {
-			color: color.adjust($white, $alpha: -0.7);
+		&__input {
+			padding: 1rem 1.5rem;
+			border-radius: 0.5rem;
+			border: 2px solid color.adjust($white, $alpha: -0.8);
+			color: $white;
 			font-size: $font-size-base;
-			font-weight: $font-weight-medium;
+			font-weight: $font-weight-normal;
+			background-color: $dark-md;
+			font-family: $font-family;
+			width: 100%;
+
+			&::placeholder {
+				color: color.adjust($white, $alpha: -0.7);
+				font-size: $font-size-base;
+				font-weight: $font-weight-normal;
+			}
+
+			&:hover {
+				border: 2px solid color.adjust($white, $alpha: -0.5);
+			}
+
+			&:focus {
+				border: 2px solid $color-primary;
+				outline: none;
+			}
+
+			&--error {
+				border: 2px solid $color-error;
+			}
+
+			// @include focus-ring;
 		}
 
-		@include focus-ring;
-	}
+		.error-element {
+			display: none;
+			align-items: center;
+			gap: 0.5rem;
+			margin-top: 0.8rem;
+			color: $color-error;
+			// font-weight: $font-weight-medium;
 
+			&__icon {
+				width: 1.25rem;
+			}
+		}
+	}
 	&__button {
 		background-color: $color-primary;
 		border: none;
@@ -41,22 +70,24 @@
 		font-family: $font-family;
 		cursor: pointer;
 		text-decoration: none;
-		margin-top: 1.5rem;
-		width: 100%;
+		margin-top: 2.5rem;
+		box-shadow: 0 0 30px -5px $color-primary;
+		// // width: 100%;
 
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 0.6rem;
 
-		transition: background-color 0.2s ease-in-out;
+		transition: box-shadow 0.2s ease-in-out;
 
 		img {
 			width: 1.25rem;
 		}
 
 		&:hover {
-			background-color: color.adjust($color-primary, $alpha: -0.5);
+			box-shadow: 0 0 40px 0px $color-primary;
+			// background-color: color.adjust($color-primary, $alpha: -0.5);
 		}
 
 		@include focus-ring;
