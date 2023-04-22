@@ -8,8 +8,8 @@ import string
 # The function returns 4 parameters
 comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key,video_url="https://youtu.be/2LhoCfjm8R4")
 
-comment_classifier = pkl.load(open("Pickle_file/question_classifier.pkl",'rb'))
-vectorizer = pkl.load(open("Pickle_file/text_vectorizer.pkl",'rb'))
+comment_classifier = pkl.load(open("./python_db/Pickle_file/question_classifier.pkl",'rb'))
+vectorizer = pkl.load(open("./python_db/Pickle_file/text_vectorizer.pkl",'rb'))
 
 interrogative_comments = []
 feedback_comments = []
