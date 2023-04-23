@@ -4,9 +4,13 @@ from keys import api_key, AtlasConnection_string
 from youtube_api import YoutubeAPI
 import random
 import string
+import sys
+
+link = sys.argv[1]
+# print(link)
 
 # The function returns 4 parameters
-comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key,video_url="https://youtu.be/2LhoCfjm8R4")
+comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key,video_url=link)
 
 comment_classifier = pkl.load(open("./python_db/Pickle_file/question_classifier.pkl",'rb'))
 vectorizer = pkl.load(open("./python_db/Pickle_file/text_vectorizer.pkl",'rb'))
