@@ -19,7 +19,7 @@ interrogative_comments = []
 feedback_comments = []
 for comment in comments:
     label = comment_classifier.predict(vectorizer.transform([comment]))
-    if label in ["whQuestion","yAnswer","nAnswer","ynQuestion"]:
+    if label in ["whQuestion","ynQuestion"]:
         interrogative_comments.append(comment)
     else:
         feedback_comments.append(comment)
@@ -28,27 +28,18 @@ for comment in comments:
 
 atlas_client = MongoClient(AtlasConnection_string)
 
-#Create session_id with random string
-length = 7
-session_id = ''.join(random.choices(string.ascii_letters + string.digits, k=length))
-
 #Create a Database
 comments_db = atlas_client.comments_db
-collection_question_name = "q_"+session_id
-collection_feedback_name = "f_"+session_id
-collection_video_name = "d_"+session_id
+
 #Create Two collections
-questions = comments_db[collection_question_name]
-feedbacks = comments_db[collection_feedback_name]
-video_details = comments_db[collection_video_name]
 
-questions.insert_many([{'comment':question} for question in interrogative_comments])
-feedbacks.insert_many([{'comment':feedback} for feedback in feedback_comments])
-
+video_details = comments_db.video_details
 
 video_details.insert_one({
     'Title':video_title,
     'Subscriber': subscriber_count,
-    'Channel Name': channel_name
+    'Channel Name': channel_name,
+    'comment': feedback_comments,
+    'question': interrogative_comments
 })
-print(session_id)
+print("updated database")
