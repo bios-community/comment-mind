@@ -1,7 +1,9 @@
 import { PythonShell } from "python-shell";
 import sentimentClassifierModel from "../models/sentimentClassifierModel.js";
+import videoDetailsModel from "../models/videoDetailsModel.js";
 
 const commentHandler = async (req, res) => {
+	/* * Just for some time
 	try {
 		// * Creating options
 		// const options = {
@@ -39,13 +41,54 @@ const commentHandler = async (req, res) => {
 			error,
 		});
 	}
-	// const answer = await sentimentClassifierModel.find({
-	// 	comment: ["what a shit video!", "what a beautiful day!"],
+	*/
+
+	// const predictions = await sentimentClassifierModel.find(
+	// 	{
+	// 		collection: "mongo_atlas.video_details",
+	// 	},
+	// 	{
+	// 		"sentiment_classifier.sentiment": "sentiment",
+	// 		// "video-details.comment": "comment",
+	// 	}
+	// );
+
+	const answer = await videoDetailsModel.find({
+		collection: "mongo_atlas.video_details",
+		Title: "What to Do When Your College Doesn't Care About You?",
+	});
+
+	const comments = answer[0].comment;
+
+	// const predictions = await comments.map(async comment => {
+	// 	const prediction = await sentimentClassifierModel.find(comment);
+	// 	return prediction;
 	// });
 
-	// res.status(200).json({
-	// 	answer,
-	// });
+	// * Declaring the function
+
+	const getPredictions = comments => {
+		let count = 0;
+		return Promise.all(
+			comments.map(async comment => {
+				const prediction = await sentimentClassifierModel.find(comment);
+				count++;
+				console.log(prediction);
+				console.log(`Count: ${count}`);
+				console.log("-----------------");
+				return prediction;
+			})
+		);
+	};
+
+	// * Calling the function
+	const predictions = await getPredictions(comments);
+
+	// const prediction = await sentimentClassifierModel.find(comments[0]);
+
+	res.status(200).json({
+		predictions,
+	});
 };
 
 export default commentHandler;
