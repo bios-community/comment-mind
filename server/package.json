@@ -12,6 +12,7 @@
 	"dependencies": {
 		"cors": "^2.8.5",
 		"express": "^4.18.2",
+		"mindsdb-js-sdk": "^2.2.0",
 		"mongoose": "^7.0.3",
 		"python-shell": "^5.0.0"
 	},
