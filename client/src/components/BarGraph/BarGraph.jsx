@@ -26,13 +26,14 @@ let numOfPositiveComments = 0;
 let numOfNeutralComments = 0;
 let numOfNegativeComments = 0;
 
-videoDetails.forEach(element => {
-	if (element.sentiment === "positive") numOfPositiveComments++;
-	else if (element.sentiment === "neutral") numOfNeutralComments++;
+videoDetails.feedback.forEach(comment => {
+	if (comment.sentiment === "positive") numOfPositiveComments++;
+	else if (comment.sentiment === "neutral") numOfNeutralComments++;
 	else numOfNegativeComments++;
 });
 
 const options = {
+	maintainAspectRatio: false,
 	responsive: true,
 	scales: {
 		y: {
@@ -41,10 +42,6 @@ const options = {
 				display: true,
 				color: "rgba(255, 255, 255, 0.25)",
 				lineWidth: [1, 0],
-			},
-			gridLines: {
-				display: true,
-				tickBorderDash: [5, 5],
 			},
 			title: {
 				display: true,
@@ -59,6 +56,9 @@ const options = {
 				},
 				color: "rgba(255, 255, 255, 0.8)",
 			},
+			border: {
+				dash: [5, 5],
+			},
 		},
 		x: {
 			beginAtZero: true,
@@ -67,6 +67,9 @@ const options = {
 				color: "rgba(255, 255, 255, 0.25)",
 				lineWidth: [1],
 				tickBorderDash: [5, 5],
+			},
+			border: {
+				dash: [5, 5],
 			},
 			title: {
 				display: true,
@@ -127,6 +130,7 @@ const data = {
 				"rgb(255, 99, 132)",
 			],
 			borderWidth: 1,
+			borderRadius: 6,
 		},
 	],
 };
@@ -134,7 +138,7 @@ const data = {
 const BarChart = () => {
 	return (
 		<div className="bar-wrapper">
-			<Bar options={options} data={data} />
+			<Bar options={options} data={data} height={100} />
 		</div>
 	);
 };

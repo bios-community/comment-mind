@@ -1,0 +1,13 @@
+@use "../../styles/abstracts/" as *;
+
+.graphs {
+	&__chartjs {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+
+		* {
+			width: 45%;
+		}
+	}
+}

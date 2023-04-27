@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "./Analysis.scss";
 import Loader from "../../components/Loader/Loader";
-import BarGraph from "../../components/BarGraph/BarGraph";
+import Graphs from "../../components/Graphs/Graphs";
 
 const Analysis = ({ link }) => {
 	const navigate = useNavigate();
@@ -34,8 +34,10 @@ const Analysis = ({ link }) => {
 			{isLoading ? (
 				<Loader />
 			) : (
-				<div className="graphs">
-					<BarGraph />
+				<div className="container">
+					<div className="graphs">
+						<Graphs />
+					</div>
 				</div>
 			)}
 		</>
