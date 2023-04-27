@@ -4,6 +4,7 @@ import axios from "axios";
 
 import "./Analysis.scss";
 import Loader from "../../components/Loader/Loader";
+import BarGraph from "../../components/BarGraph/BarGraph";
 
 const Analysis = ({ link }) => {
 	const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Analysis = ({ link }) => {
 		}
 
 		setIsLoading(true);
+		setTimeout(() => setIsLoading(false), 2000);
 	}, []);
 
 	// useEffect(async () => {
@@ -27,7 +29,17 @@ const Analysis = ({ link }) => {
 	// 	setIsLoading(false);
 	// }, []);
 
-	return <>{isLoading ? <Loader /> : <div>Analysis</div>}</>;
+	return (
+		<>
+			{isLoading ? (
+				<Loader />
+			) : (
+				<div className="graphs">
+					<BarGraph />
+				</div>
+			)}
+		</>
+	);
 };
 
 export default Analysis;
