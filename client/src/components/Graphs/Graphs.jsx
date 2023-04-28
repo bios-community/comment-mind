@@ -1,6 +1,7 @@
 import React from "react";
 import BarGraphs from "../BarGraph/BarGraph";
 import DoughnutGraph from "../DoughnutGraph/DoughnutGraph";
+import WordCloud from "../WordCloud/WordCloud";
 
 import "./Graphs.scss";
 
@@ -11,6 +12,7 @@ const Graphs = () => {
 				<BarGraphs />
 				<DoughnutGraph />
 			</div>
+			<WordCloud />
 		</div>
 	);
 };
