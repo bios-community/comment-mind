@@ -33,17 +33,18 @@ const Analysis = ({ link }) => {
 
 		console.log(response.data.data[0]);
 		setVideoDetails(response.data.data[0]);
+		setIsLoading(false);
 	};
 
-	useEffect(() => {
-		console.log(videoDetails && videoDetails);
-	}, [videoDetails]);
+	// useEffect(() => {
+	// 	console.log(videoDetails && videoDetails);
+	// }, [videoDetails]);
 
 	useEffect(() => {
 		if (!link) {
 			navigate("/");
 		}
-
+		setIsLoading(true);
 		fetchData();
 	}, []);
 
@@ -51,25 +52,25 @@ const Analysis = ({ link }) => {
 		<>
 			{isLoading ? (
 				<Loader />
-			) : videoDetails ? (
-				<div className="container">
-					<h1 className="analysis-title">{videoDetails.Title}</h1>
-					<div className="tables">
-						<Table
-							contentArray={videoDetails.question}
-							type="Questions"
-						/>
-						<Table
-							contentArray={videoDetails.comment}
-							type="Feedbacks"
-						/>
-					</div>
-					<>
-						<Graphs videoDetails={videoDetails} />
-					</>
-				</div>
 			) : (
-				<div>No video details found!</div>
+				videoDetails && (
+					<div className="container">
+						<h1 className="analysis-title">{videoDetails.Title}</h1>
+						<div className="tables">
+							<Table
+								contentArray={videoDetails.question}
+								type="Questions"
+							/>
+							<Table
+								contentArray={videoDetails.comment}
+								type="Feedbacks"
+							/>
+						</div>
+						<>
+							<Graphs videoDetails={videoDetails} />
+						</>
+					</div>
+				)
 			)}
 		</>
 	);

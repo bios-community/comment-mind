@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import videoDetails from "../../constants/videoDetails";
 import axios from "axios";
 
 import WordCloudSVG from "../WordCloudSVG/WordCloudSVG";
