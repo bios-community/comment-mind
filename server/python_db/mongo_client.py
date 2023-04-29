@@ -14,6 +14,7 @@ comments, video_title, subscriber_count, channel_name=YoutubeAPI(api_key=api_key
 comment_classifier = pkl.load(open("./python_db/Pickle_file/question_classifier.pkl",'rb'))
 vectorizer = pkl.load(open("./python_db/Pickle_file/text_vectorizer.pkl",'rb'))
 
+
 interrogative_comments = []
 feedback_comments = []
 for comment in comments:
@@ -23,9 +24,22 @@ for comment in comments:
     else:
         feedback_comments.append(comment)
 
+# Start saving comments to database in Different collections
+atlas_client = MongoClient(AtlasConnection_string)
+
+#Create a Database
+comments_db = atlas_client.comments_db
+#Create a Collection
+video_details = comments_db.video_details
+#Check if video already exists in database
+video = video_details.find_one({"Title":video_title})
+if video:
+    print(video_title)
+    sys.exit()
+
 mindsdb_cloud = MongoClient(CloudConnection_string)
 mindsdb = mindsdb_cloud.mindsdb
-sentiment_classifier = mindsdb.sentiment_classifier
+sentiment_classifier = mindsdb.sentiment_classifier2
 pred_list = [sentiment_classifier.find({'comment':i}) for i in feedback_comments]
 pred_list1 = pred_list[:int(len(pred_list)/2)]
 pred_list2 = pred_list[int(len(pred_list)/2):]
@@ -42,14 +56,6 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor1, \
     futures2 = [executor2.submit(process_cursor,cursor)for cursor in pred_list2]
 
     concurrent.futures.wait(futures1 + futures2)
-# Start saving comments to database in Different collections
-
-atlas_client = MongoClient(AtlasConnection_string)
-
-#Create a Database
-comments_db = atlas_client.comments_db
-
-video_details = comments_db.video_details
 
 video_details.insert_one({
     'Title':video_title,
