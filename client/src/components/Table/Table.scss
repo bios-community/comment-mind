@@ -1,0 +1,27 @@
+@use "../../styles/abstracts" as *;
+@use "sass:color";
+
+.table {
+	// border-collapse: collapse;
+	// border: 3px solid color.adjust($dark-md, $lightness: 5%);
+	// border-radius: 10px;
+	// overflow-y: scroll;
+	display: block;
+	margin-top: 3rem;
+	max-height: 500px;
+	overflow-y: auto;
+
+	td,
+	th {
+		padding: 10px;
+		border: 1px solid color.adjust($dark-md, $lightness: 5%);
+	}
+
+	tr:nth-child(odd) {
+		background-color: color.adjust($dark-md, $lightness: 2%);
+	}
+
+	tr:nth-child(even) {
+		background-color: color.adjust($dark-md, $lightness: 8%);
+	}
+}

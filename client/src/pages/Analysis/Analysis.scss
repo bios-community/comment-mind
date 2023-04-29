@@ -1,0 +1,17 @@
+@use "../../styles/abstracts/" as *;
+
+.analysis-title {
+	margin-top: 1.5rem;
+	font-size: $font-size-lg;
+	font-weight: $font-weight-bold;
+	text-align: center;
+}
+
+.tables {
+	display: flex;
+	gap: 1rem;
+
+	* {
+		flex: 1;
+	}
+}

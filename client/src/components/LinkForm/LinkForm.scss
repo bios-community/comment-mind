@@ -39,7 +39,7 @@
 			}
 
 			&--error {
-				border: 2px solid $color-error;
+				border: 2px solid $color-danger;
 			}
 
 			// @include focus-ring;
@@ -50,7 +50,7 @@
 			align-items: center;
 			gap: 0.5rem;
 			margin-top: 0.8rem;
-			color: $color-error;
+			color: $color-danger;
 			// font-weight: $font-weight-medium;
 
 			&__icon {

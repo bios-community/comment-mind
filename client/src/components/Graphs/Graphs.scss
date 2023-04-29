@@ -1,0 +1,19 @@
+@use "../../styles/abstracts/" as *;
+@use "sass:color";
+
+.graphs {
+	margin-top: 4rem;
+
+	&__chartjs {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+
+		* {
+			width: 49%;
+			background-color: color.adjust($dark-md, $lightness: 2%);
+			padding: 1rem;
+			border-radius: 0.5rem;
+		}
+	}
+}

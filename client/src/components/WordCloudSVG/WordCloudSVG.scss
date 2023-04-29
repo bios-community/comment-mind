@@ -1,0 +1,30 @@
+@use "../../styles//abstracts/" as *;
+@use "sass:color";
+
+.word-cloud-svg--wrapper {
+	width: fit-content;
+	margin: 1.5rem auto;
+	padding: 1.5rem;
+	background-color: color.adjust($dark-md, $lightness: 2%);
+	border-radius: 0.5rem;
+}
+
+.word-cloud-svg svg {
+	margin: 0 auto;
+}
+
+.word-cloud-text {
+	text-align: center;
+	font-size: $font-size-lg;
+
+	display: flex;
+	flex-direction: column;
+
+	&--bigger {
+		font-weight: $font-weight-medium;
+	}
+
+	&--smaller {
+		font-size: $font-size-base;
+	}
+}
