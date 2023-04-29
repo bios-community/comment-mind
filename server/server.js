@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
-const DATABASE_URI = process.env.MINDSDB_URI;
+const DATABASE_URI = process.env.MONGODB_URI;
 mongoose.connect(DATABASE_URI).then(() => {
 	console.log("Connected To DataBase!");
 });

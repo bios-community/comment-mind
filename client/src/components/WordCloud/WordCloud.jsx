@@ -5,9 +5,15 @@ import axios from "axios";
 import WordCloudSVG from "../WordCloudSVG/WordCloudSVG";
 import Loader from "../Loader/Loader";
 
-const WordCloudElement = () => {
+const WordCloudElement = ({ comment }) => {
 	const [wordCloudSVG, setWordCloudSVG] = useState(null);
 	const [wordCloudLoaded, setWordCloudLoaded] = useState(false);
+
+	const commentsArray = comment.map(feedback => {
+		return feedback.comment;
+	});
+
+	const wordCloudData = commentsArray.join(" ");
 
 	const getWordCloud = async () => {
 		try {
@@ -30,7 +36,6 @@ const WordCloudElement = () => {
 			});
 			setWordCloudSVG(res.data);
 			setWordCloudLoaded(true);
-			console.log(wordCloudSVG);
 		} catch (error) {
 			console.log(error);
 		}
@@ -39,14 +44,6 @@ const WordCloudElement = () => {
 	useEffect(() => {
 		getWordCloud();
 	}, []);
-
-	console.log("The word cloud element is being rendered");
-
-	const commentsArray = videoDetails.feedback.map(feedback => {
-		return feedback.comment[0];
-	});
-
-	const wordCloudData = commentsArray.join(" ");
 
 	return (
 		<>

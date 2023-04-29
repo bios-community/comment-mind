@@ -5,14 +5,18 @@ import WordCloud from "../WordCloud/WordCloud";
 
 import "./Graphs.scss";
 
-const Graphs = () => {
+const Graphs = ({ videoDetails }) => {
+	console.log(videoDetails);
 	return (
 		<div className="graphs">
 			<div className="graphs__chartjs">
-				<BarGraphs />
-				<DoughnutGraph />
+				<BarGraphs comment={videoDetails.comment} />
+				<DoughnutGraph
+					comment={videoDetails.comment}
+					question={videoDetails.question}
+				/>
 			</div>
-			<WordCloud />
+			<WordCloud comment={videoDetails.comment} />
 		</div>
 	);
 };
