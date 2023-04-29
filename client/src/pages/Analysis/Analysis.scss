@@ -1,0 +1,10 @@
+@use "../../styles/abstracts/" as *;
+
+.tables {
+	display: flex;
+	gap: 1rem;
+
+	* {
+		flex: 1;
+	}
+}

@@ -1,0 +1,30 @@
+@use "../../styles/abstracts/" as *;
+
+.table-data {
+	&--side {
+		min-width: 10%;
+	}
+}
+
+.sentiment {
+	padding: 8px;
+	font-size: $font-size-sm;
+	text-transform: uppercase;
+	border-radius: 5px;
+	font-weight: $font-weight-bold;
+
+	&--positive {
+		background-color: $color-success;
+		color: #fff;
+	}
+
+	&--negative {
+		background-color: $color-danger;
+		color: #fff;
+	}
+
+	&--neutral {
+		background-color: $color-info;
+		color: #fff;
+	}
+}
