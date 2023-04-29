@@ -18,6 +18,7 @@ const Table = ({ contentArray, type }) => {
 			);
 		}
 	});
+	// console.log(contentArray);
 
 	return (
 		<table className="table">

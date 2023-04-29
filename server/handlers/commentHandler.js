@@ -12,12 +12,12 @@ const commentHandler = async (req, res) => {
 		// * To run Python Script
 		// const message = await PythonShell.run("mongo_client.py", options);
 
-		const answer = await videoDetailsModel.find({
+		const data = await videoDetailsModel.find({
 			Title: "Top-notch Coding Projects for Employment!",
 		});
 
 		res.status(200).json({
-			answer,
+			data,
 		});
 	} catch (error) {
 		res.status(500).json({

@@ -8,7 +8,7 @@ import Home from "./pages/Home/Home";
 import "./App.scss";
 
 function App() {
-	const [link, setLink] = useState("");
+	const [link, setLink] = useState(null);
 	return (
 		<>
 			<Nav />
